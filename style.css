@@ -1,0 +1,527 @@
+/* CSS is how you can add style to your website, such as colors, fonts, and positioning of your
+   HTML content. To learn how to do something, just try searching Google for questions like
+   "how to change link color." */
+
+:root {  
+    --softPink: #ff69b4;
+    --textGrey: #575656;
+    --funkyGreen: #A6C20A;
+    --mellowYellow: #F1E49D;   
+}
+
+
+
+
+@font-face {
+  font-family: "Tahoma";
+  src: url('fonts/Tahoma.ttf');
+}
+
+@font-face {
+  font-family: "Tahoma Bold";
+  src: url('fonts/Tahoma-Bold.ttf');
+}
+
+@font-face {
+  font-family: "Milker";
+  src: url('fonts/Milker.otf');
+}
+
+/* red apple cursor - From Cursors-4U.com */
+* {
+  cursor: url('https://cdn.cursors-4u.net/css-previews/red-apple-being-eaten-1b24c7af-css.webp') 0 0, auto !important;
+}
+
+body {
+ 
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    
+
+    background-color: #dfd5b1;
+    background-image:  
+    repeating-radial-gradient( circle at 0 0, transparent 0, #fdc0c8 9px ), repeating-linear-gradient( #F0F0EB, #BF4575 );
+}
+
+
+.content-wrapper {
+    
+    position: absolute;  
+    margin-top: 160px;
+    }
+
+ /* Below is the stamp border, which is one z-index below the container */
+
+.stamp-border {
+    position: absolute;
+    top: -20px;      /* slightly bigger than container for border effect */
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    z-index: -1;
+
+    --radius: 8px;
+    background-image: 
+        radial-gradient(var(--radius), transparent 98%, #A6C20A),
+        linear-gradient(#A6C20A 0 0);
+    background-repeat: round, no-repeat;
+    background-position: 
+        calc(var(--radius) * -1.5) calc(var(--radius) * -1.5),
+        50%;
+    background-size:
+        calc(var(--radius) * 3) calc(var(--radius) * 3),
+        calc(100% - var(--radius) * 3) calc(100% - var(--radius) * 3);
+
+    filter: drop-shadow(10px 10px 6px rgba(0, 0, 0, 0.35));
+}
+
+.container {
+    
+    /*IMPORTANT .. An element with relative positioning can overlap other elements without affecting their position or interrupting the normal document flow. */
+    
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+
+
+    width:  850px;
+    height: 450px;
+
+    padding: 5px;
+    
+    background-color: #F5F5F2;
+    box-sizing: border-box;
+}
+
+
+
+
+  /* ROW TO THE RIGHTTT. */
+
+.first-row {
+
+    width: 20%;
+    display: block;
+    box-sizing: border-box;
+    background-color: lightpink;
+} 
+
+.nav {
+    
+    
+
+    } 
+    
+ /* NAVIGATION SECTION */
+
+.nav h4 {
+    display: block;
+    font-family: "Milker";
+    letter-spacing: 3px;
+    text-align: center;
+    margin: 0;
+    padding: 3px;
+    color: white;
+    background-color: var(--funkyGreen) ;
+        } 
+
+.nav a  {
+    
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 3px;
+    margin-top: 3px;
+    
+    
+    text-decoration: none;
+    font-family: "Tahoma";
+    font-size: 10pt;
+    letter-spacing: 1px;
+    background-color: var(--mellowYellow);
+    
+    }
+
+
+ /* NAV PSEUDO CLASSES (aka altered state styles) */
+
+.nav a:link {
+    color: #85683A;
+    text-decoration: none;
+    }
+
+.nav a:hover {
+    color: #EF3054;
+    text-decoration: underline;
+    }
+
+.stamps {
+    justify-self: center;
+    }
+
+
+/* START OF WORDSEARCH */
+
+
+#wordsearch {
+	text-align: center;
+	padding: 4px;
+	border: 2px solid var(--funkyGreen);
+	background-color: #fff;
+	box-shadow: 0 2 2px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;  
+    width: 70%;
+}
+
+#wordsearch h5 {
+    margin: 8px;
+    font-family: "Milker"; ;
+	color: #A6C20A;
+}
+
+
+.puzzle {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 3px;
+	justify-content: center;
+	margin: 1px;
+    height: 100%; /* add this */
+}
+
+.on-mouse-drag {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: 1px solid #333;
+    border-radius: 10%;
+    background-color: white;
+    cursor: pointer;
+    user-select: none;
+    font-family: "Tahoma-Bold";
+    color: #A6C20A;
+}
+
+
+.on-mouse-drag:hover {
+	background-color: #adb5bd;
+}
+
+.on-mouse-drag.highlight {
+	background-color: palevioletred;
+}
+
+.on-mouse-drag.found {
+	color: hotpink;
+}
+
+.found-wow { 
+	background-color: #ffd6e7; 
+}
+.found-cat { 
+	background-color: #d6f5d6; 
+}
+
+.found-sol { 
+	background-color: #D8F0EF; 
+}
+
+.found-bam { 
+	background-color: #fff5cc; 
+}
+
+/* END OF WORDSEARCH */
+
+
+.projects {
+    display: block;
+    padding: 3px;
+    background-color: lightgoldenrodyellow;
+    background-image: url(images/paper.jpg);
+
+    mix-blend-mode:  color-burn;
+  
+    height: 35%;
+    width: auto;
+
+    }
+
+
+.projects h4 {
+    background-color: beige;
+    font-size: 10pt;
+    font-family: "Tahoma-Bold"
+
+    }
+
+.projects p {
+    font-size: 10pt;
+    font-family: "Tahoma"
+    }
+
+
+/* CENTER ROW OF FLEX CONTAINER */
+
+.center-row {
+    
+    width: 50%;
+    
+
+    
+      }
+
+/* SITE-UPDATES SECTION */
+
+.site-updates {
+    background: linear-gradient(#C4E68A 50%, #B4E657);
+    height: 200px;
+    width: 200px;
+    border-radius: 5px;
+    overflow-y: scroll;
+    transform: rotate(3deg);
+ 
+    }
+
+.site-updates p {
+    font-family: "Tahoma";
+    font-size: 10pt;
+    color: var(--textGrey); 
+    margin-left: 6px;
+    margin-right: 6px;
+     }
+
+.updates {
+    font-family: "Milker";
+    font-size: 11pt;
+    color: #EF3054;
+    margin-right: 5px;
+    margin-left: 5px;
+    }
+
+.updates-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 2.5em;
+    background: linear-gradient(#75513F 50%, #5C3827);
+
+    display: flex;
+    justify-content: center;   
+    align-items: center;     
+}
+
+.updates-header h4 {
+    margin: 0;
+    padding: 0;
+    font-family: "Milker";
+    color: white;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    
+}
+
+/* HEADER SECTION */
+
+.header-logo {
+    font-size: 25px;
+    }
+    
+.logo {
+    font-family: "Cedarville Cursive", cursive;
+    color: #EF3054;
+    text-shadow: 2px 2px #D1CA1D, 3px 3px #a5b77a;
+    margin-top: 0; 
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.intro {
+    
+    font-family: "Tahoma";
+    font-size: 10pt;
+    color: var(--textGrey); 
+    padding: 50px;
+    text-align: center;
+    
+    }
+
+.last-row {
+    
+    width: 30%; 
+}
+
+/* LAST PLAYED Last.fm card */
+
+.lastfm-card {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(#75513F 50%, #5C3827);   /* background color */
+  padding: 8px 10px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  max-width: 280px;
+  font-family: "Cedarville Cursive", cursive, Arial, sans-serif;
+  transition: transform 0.2s ease;
+}
+
+.lastfm-card:hover {
+  transform: translateY(-2px);
+}
+
+#albumcover {
+  width: 70px;
+  height: 70px;
+  border-style: inset;
+  border-color: var(--funkyGreen);
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#tracktitle {
+  font-weight: bold;
+  color: var(--funkyGreen);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: clip;
+  text-overflow: ellipsis;
+}
+
+.track-title-wrapper {
+  overflow: hidden;       /* hides text when it moves outside the container */
+  width: 100%;            /* container takes full available width */
+}
+
+#tracktitle {
+  display: block;         /* makes the link behave like a block element */
+  white-space: nowrap;    /* prevents the text from wrapping to multiple lines */
+}
+
+.marquee-text {
+  display: inline-block;  /* allows transform animation to move the text */
+  padding-right: 40px;    /* spacing between repeated titles */
+  animation: marquee 12s linear infinite; /* runs the marquee animation infinitely */
+}
+
+/* the @ defines the scrolling animation */
+@keyframes marquee {
+
+  from {
+    transform: translateX(0); /* starting position (normal position) */
+  }
+
+  to {
+    transform: translateX(-50%); /* moves left by half its width */
+  }
+
+}
+
+#tracktitle:hover {
+  text-decoration: underline;
+}
+
+#trackartist {  
+  font-size: 0.85em;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.about-webmiss {
+    background: linear-gradient(#E6D7C1 40%, #F5EBE4); 
+    border-radius: 5%;
+    padding: 5px;
+    border-style: dashed;
+    border-width: thick;
+    border-color: var(--softPink);
+    
+    }
+
+.about-webmiss h4 {  
+    font-family: "Milker";
+    color: #EF3054;
+    text-shadow: 1px 1px white;
+    text-align: center;
+    margin-right: 300px;
+    }
+
+.about-webmiss p { 
+    color: var(--textGrey);
+    font-family: "Tahoma";
+    font-size: 10pt;
+    margin-left: 20px;
+    }
+
+.about-webmiss span { 
+     font-family: "Tahoma-Bold";
+     font-size: 9pt;
+    }
+
+.about-webmiss img {
+    float: left;
+    margin-right: 10px;
+    margin-top: 16px;
+    margin-left: 30px;
+}
+
+.gallery {
+  display: flex;
+  height: 20%;
+  width: 100%;
+ scrollbar-color: var(--funkyGreen) transparent;  
+}
+
+.gallery-images {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px;       
+}
+
+.image-wrapper {
+  position: relative; /* makes overlay position relative to each image */
+  height: 100%;
+}
+
+.image-wrapper img {
+  display: block;
+  height: 100%;
+  width: auto;
+  border-radius: 8px;
+}
+
+/* overlay inside each image */
+.image-wrapper .overlay {
+  position: absolute; /* anchors the overlay to image-wrapper */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: pink;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  pointer-events: none; /* allows scrolling and clicking through */
+}
+
+/* changes overlay color on hover */
+.image-wrapper:hover .overlay {
+  background-color: var(--funkyGreen);
+}
+
+
+
+
+
+
+

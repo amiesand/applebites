@@ -129,28 +129,38 @@ body {
     left: 320px;
     bottom: 490px;
     transform: rotate(4deg);
+    
     display: flex;
     flex-direction: row; 
     gap: 5px;
     padding: 5px;
     flex-wrap: nowrap;
-    overflow: scroll;
+    overflow-x: auto;
+    overflow-y: hidden;
+    
     background-color: var(--softPink);
     border: solid var(--darkPink);
     box-shadow: 5px 5px;
     height: 90px;
     width: 550px;
     scrollbar-color: var(--funkyGreen) transparent;
-   scrollbar-width: thin;
+    scrollbar-width: thin;
+     
 }
 
 
 .gallery img {
     height: 100%;
-   mix-blend-mode: darken;
-
+    width: auto;    
+    flex-shrink: 0;   
+    object-fit: contain;
+    max-height: 75px;
+    mix-blend-mode: darken;
 }
 
+.buttonfondo {
+    background-color: var(--softPink);
+}
 
 
 .boxgrid {

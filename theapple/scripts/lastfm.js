@@ -6,6 +6,8 @@
   const coverEl  = document.getElementById("albumcover");
   const albumLinkEl = document.getElementById("albumlink");
 
+  let fetchId = null;
+
   async function update() {
     try {
       const res = await fetch(`${API_URL}&_=${Date.now()}`);
@@ -34,11 +36,11 @@
         artistEl.textContent = artist;
       }
 
-      // album cover (always grab largest)
-      const cover = track.image?.[3]?.["#text"];
+      // album cover (always keep wrapper visible)
+      const cover = track.image?.[3]?.["#text"] || "";
       if (coverEl) {
-        coverEl.src = cover || "";
-        coverEl.style.display = cover ? "block" : "none";
+        coverEl.src = cover;
+        coverEl.style.display = "block"; // always shows <img> element
       }
 
     } catch (err) {
@@ -46,6 +48,17 @@
     }
   }
 
+  // initial fetch
   update();
-  setInterval(update, 30000);
+  fetchId = setInterval(update, 30000);
+
+  // pauses fetching when tab is hidden
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      clearInterval(fetchId);
+    } else {
+      update();
+      fetchId = setInterval(update, 30000);
+    }
+  });
 })();

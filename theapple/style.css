@@ -124,36 +124,41 @@ body {
 
 
 
-.gallery {
+.gallery  {
     position: relative;
     left: 320px;
     bottom: 490px;
     transform: rotate(4deg);
     
-    display: flex;
-    flex-direction: row; 
-    gap: 5px;
-    padding: 5px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-    
+    height: 90px;
+    width: 550px;
+
     background-color: var(--softPink);
     border: solid var(--darkPink);
     box-shadow: 5px 5px;
-    height: 90px;
-    width: 550px;
-    scrollbar-color: var(--funkyGreen) transparent;
-    scrollbar-width: thin;
-     
+    overflow: hidden;
 }
 
+.imagetrack {
+    display: flex;
+    width: max-content;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    
+    animation: 15s horzmarquee infinite linear; 
+}
+
+.innermarq, #tracktitle  {
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    width: max-content;
+    
+}
 
 .gallery img {
-    height: 100%;
-    width: auto;    
-    flex-shrink: 0;   
-    object-fit: contain;
+    height: 100%; 
+    width: auto;
     max-height: 75px;
     mix-blend-mode: darken;
 }

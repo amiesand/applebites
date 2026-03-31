@@ -102,6 +102,15 @@ body {
     
 }
 
+.decor img {
+    position: absolute;
+    width: 200px;
+    top: -40px;
+    left: 890px;
+    transform: rotate(25deg);
+    z-index: -1;
+}
+
 .pagecontent {
     display: flex;
     position: relative;

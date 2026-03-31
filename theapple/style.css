@@ -68,7 +68,7 @@ body {
     font-family:  "Tahoma";
     display: flex;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     min-height: 100vh;
 }
 
@@ -76,14 +76,15 @@ body {
      position: absolute;
      top: 0; left: 0;
      transform: translate(-20px, -0%);
-    z-index: -1;
+     z-index: -1;
 }
 
 
 .logo {
     position: absolute;
     top: 0; left: 0;
-     transform: translate(-50px, -100%);
+     transform: translate(-100px, -100%);
+    padding: 2px;
 }
 
 .frontlogo h1 {
@@ -101,14 +102,57 @@ body {
     
 }
 
-.main {
+.pagecontent {
+    display: flex;
     position: relative;
-    align-self: center;
+     width: 850px;
+    height: 480px; 
+}
+
+.main {
+    flex: 1;
     background-color: var(--cream);
     box-shadow: 14px 14px var(--softGreen);
     padding: 10px;
-    width: 850px;
-    height: 480px; 
+  
+}
+
+.navside {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 120px;
+   
+}
+
+
+.navside ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  font-family: var(--fontParadise);
+    font-size: 1.3em
+   
+}
+
+.navside li {
+    background-color: var(--dirtBrown);
+      border-radius: 20px 0 0 20px;
+    padding: 10px;
+     color:var(--funkyGreen);
+   
+}
+
+li a {
+    text-decoration: none;
+     color: var(--cream);
+}
+
+li a:hover {
+  color: var(--popPink);
 }
 
 .aside {
@@ -126,7 +170,7 @@ body {
 
 .gallery  {
     position: relative;
-    left: 320px;
+    left: 220px;
     bottom: 490px;
     transform: rotate(4deg);
     
@@ -145,7 +189,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     
-    animation: 15s horzmarquee infinite linear; 
+    animation: 15s horzmarquee1 infinite linear; 
 }
 
 .innermarq, #tracktitle  {
@@ -170,8 +214,8 @@ body {
 
 .boxgrid {
     position: relative;
-    left: 500px;
-    bottom: 450px;
+    left: 400px;
+    bottom: 445px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -216,7 +260,7 @@ body {
 #tracktitle {
     display: inline-block;
     padding-left: 100%;
-    animation: horzmarquee 12s linear infinite;
+    animation: horzmarquee2 12s linear infinite;
     font-family: "Milker";
     color: var(--popPink);
 }
@@ -225,7 +269,16 @@ body {
     margin-top: 15px;
     
 }
-@keyframes horzmarquee {
+@keyframes horzmarquee1 {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes horzmarquee2 {
     from {
         transform: translateX(0);
     }

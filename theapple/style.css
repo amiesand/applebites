@@ -1,41 +1,13 @@
-/* scaadabeebap boop */
-
 :root {
-    --softPink: #ebadbc;
-    --popPink: #fc7fd9;
-    --darkPink: #d75a78;
-    --textGrey: #677369;
-    --funkyGreen: #a3a447;
-    --softGreen: #bfbe8b;
-    --dirtBrown: #3e1820;
-    --cream: #e6e3dc;
-}
-
-:root {
+    --softPink: #fec7c2 ;
+    --forestGreen: #9fa043;
+    --dirt: #371617;
+    --popPink: #ff78d9;
+    --beige: #f2eed9;
+    
+   /*---- fontly variables*/
     --fontParadise:  "Birds of ParadisePERSONAL USE ONLY";
 }
-
-body {
-    cursor:
-        url("https://cdn.cursors-4u.net/css-previews/red-apple-being-eaten-1b24c7af-css.webp") 0 0,
-        auto !important;
-}
-
-* {
-    box-sizing: border-box;
-    color: var(--textGrey);
-}
-
-
-a { 
-     cursor: url('https://cdn.cursors-4u.net/css-previews/confused-onion-kun-5ff39751-css.webp') 1 1, auto !important;
-}
-/* cool text highlight thing! :D*/
-::selection {
-  background: var(--funkyGreen);
-    color: var(--cream);
-}
-
 
 @font-face {
     font-family: "Tahoma";
@@ -62,312 +34,291 @@ a {
     src: url("fonts/Birds of ParadisePERSONAL USE ONLY.ttf")
 }
 
-
 body {
-    background-color: var(--funkyGreen);
-    font-family:  "Tahoma";
+    cursor:
+        url("https://cdn.cursors-4u.net/css-previews/red-apple-being-eaten-1b24c7af-css.webp") 0 0,
+        auto !important;
+    
+    /*---- display stuff*/
+    background-color: #9fa043;
     display: flex;
+    height: 100vh;
+    margin: 0;
+   
+    /*---- positioning stuff*/
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.backlogo {
-     position: absolute;
-     top: 0; left: 0;
-     transform: translate(-20px, -0%);
-     z-index: -1;
-}
-
-
-.logo {
-    position: absolute;
-    top: 0; left: 0;
-     transform: translate(-100px, -100%);
-    padding: 2px;
-}
-
-.frontlogo h1 {
-    font-family: var(--fontParadise);
-    font-size: 5.5em;
-    color: var(--cream);
-    margin: 0;
-}
-
-.backlogo h1 {
-    font-family: "CROSS STITCH";
-    font-size: 4em;
-    color: var(--darkPink);
-    margin: 0;
+    align-content: center;
+    
+    /*---- box model (margins, padding) stuff*/
+    
+     /*---- typography stuff*/
+     font-family: "tahoma";
+     font-size: 14.5px;
+    
     
 }
 
-.decor img {
-    position: absolute;
-    width: 200px;
-    top: -40px;
-    left: 890px;
-    transform: rotate(25deg);
+p, ul { 
+    /*---- moreee typography stuff*/
+ text-transform: lowercase;
+ text-align: justify;
+ color: #403838;
+    
+}
+
+a { 
+    /*---- upon link hovers, silly onion guy*/
+     cursor: url('https://cdn.cursors-4u.net/css-previews/confused-onion-kun-5ff39751-css.webp') 1 1, auto !important;
+}
+
+.headersticker{
+    
+    position: fixed;
+    width: 900px;
+    right: -150px;
     z-index: -1;
 }
 
-.pagecontent {
-    display: flex;
-    position: relative;
-     width: 850px;
-    height: 480px; 
-}
 
-.main {
-    flex: 1;
-    background-color: var(--cream);
-    box-shadow: 14px 14px var(--softGreen);
-    padding: 10px;
-  
-}
-
-.navside {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 120px;
-   
-}
-
-
-.navside ul {
-    list-style-type: none;
+header h1 {
+    /*---- display tings*/
+    position: absolute;
     margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  font-family: var(--fontParadise);
-    font-size: 1.3em
-   
-}
-
-.navside li {
-    background-color: var(--dirtBrown);
-      border-radius: 20px 0 0 20px;
-    padding: 10px;
-     color:var(--funkyGreen);
-   
-}
-
-li a {
-    text-decoration: none;
-     color: var(--cream);
-}
-
-li a:hover {
-  color: var(--popPink);
-}
-
-.aside {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    height: 100%;
-}
-
-.intro {
-    padding: 4px;
-}
-
-
-
-.gallery  {
-    position: relative;
-    left: 220px;
-    bottom: 490px;
-    transform: rotate(4deg);
+    top: 40px;
+    right: 150px;
     
-    height: 90px;
-    width: 550px;
-
-    background-color: var(--softPink);
-    border: solid var(--darkPink);
-    box-shadow: 5px 5px;
-    overflow: hidden;
+    font-family: var(--fontParadise);
+    color: var(--beige);
+    font-size: 80px;
+    text-shadow: 4px 5px pink;
 }
 
-.imagetrack {
+.page-wrapper {
+    align-self: center;
+}
+
+.main-container {
+    background-color: var(--beige);
+    /*---- display tings*/
     display: flex;
-    width: max-content;
     flex-direction: row;
-    flex-wrap: nowrap;
-    
-    animation: 15s horzmarquee1 infinite linear; 
-}
-
-.innermarq, #tracktitle  {
-    display: flex;
-    gap: 5px;
-    padding: 5px;
-    width: max-content;
-    
-}
-
-.gallery img {
-    height: 100%; 
-    width: auto;
-    max-height: 75px;
-    mix-blend-mode: darken;
-}
-
-.buttonfondo {
-    background-color: var(--softPink);
-}
-
-
-.boxgrid {
+    justify-self: center;
+    align-self: center;
+    max-width: 800px; 
+    height: 440px;
     position: relative;
-    left: 400px;
-    bottom: 445px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 8px;
-    height: 350px;
-    width: 420px;
-    overflow-y: auto;
+
+
+    /*---- border deco*/
+    border: 5px dotted var(--beige);
+    background-clip: padding-box;
+    
+    /*---- box model (margins, padding) stuff*/
+    padding: 10px;
+    margin: 5px;
+    z-index: 1;
+    
+}
+    
+.arbesco {
+    position: absolute;
+    width: 300px;
+    right: -90px;
+    bottom: -70px;
+    z-index: -1;
+}
+
+.arbesco2 {
+    position: absolute;
+    width: 300px;
+    left: -90px;
+    top: -60px;
+    transform: rotate(900deg);
+    z-index: -1;
+}
+nav ul {
+     /*---- nav base*/
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+nav li {
+    background-color:#371617;
+    width: 80px;
+    height: 35px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    padding: 10px;
+     /*---- conent align*/
+    align-content: center;
+    text-align: center;
+    box-shadow: 3px 3.8px var(--forestGreen);
+}
+
+nav a {
+    color:#f2eed9;
+}
+
+nav a:hover {
+    color: pink;
+    /*---- hover animation*/ 
+    transition: all 0.5s ease-out;
 }
 
 
 #lastfm-widget {
-    grid-column: 1 / span 2;
-    background-color: var(--dirtBrown);
     display: flex;
+    width: 250px;
+    height: 95px;
+    background-color: var(--dirt);
+    overflow: auto;
+    
+    /*---- decor*/
+    border: 5px solid var(--popPink);
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.lastfm-track-info {
+    justify-self: center;
     align-content: center;
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
+}
+#lastfm-widget, .lastfm-track-info p {
+    color: var(--beige);
 }
 
-#albumcover {
-    object-fit: cover;
-    border: inset var(--popPink);
-    height: 100px;
-    width: 100px;  
+.lastfm-track-info p {
+    margin: 0px;
+    font-family: "Milker";
 }
 
-
-.track-info {
-    display: flex;
-   flex-direction: column;
-   flex: 1;
-   min-width: 0;
-   margin-right: 10px;
+#lastfm-widget a {
+    color: pink;
 }
 
 .track-title-wrapper {
-    overflow-x: hidden;
-    white-space: nowrap;
+    margin: 10px 0px;
 }
 
-#tracktitle {
-    display: inline-block;
-    padding-left: 100%;
-    animation: horzmarquee2 12s linear infinite;
-    font-family: "Milker";
+.lastfm-track-img {
+    align-content: center;
+    height: 100%;
+    margin: 0px 12px;
+    padding-right: 10px;
+}
+
+#album-cover {
+    width: 75px;
+    height: 75px;
+    border: dashed var(--forestGreen) 3px;
+}
+
+#lastfm-track-info {
+    display: flex;
+    align-content: center;
+}
+
+#statuscafe {
+    padding: 5px;
+    height: 70px;
+    background-color: var(--forestGreen);
+    border: 4px solid #939429;
+    border-radius: 30px;
+}
+#statuscafe-username {
+    margin-bottom: .5em;
+}
+#statuscafe-content {
+    margin: 0 1em 0.5em 1em;
+}
+
+.update-log {
+    background-color: var(--softPink);
+    margin: 0px;
+    padding: 0px;
+    height: 150px;
+    border-radius: 30px;
+    border: solid 4px #f3b3bf;
+    overflow: scroll;
+    scrollbar-color: var(--beige) transparent;  
+}
+
+.update-title {
+    top: 0;
+    position: sticky;
+    background-color: var(--softPink);
+}
+
+.update-title > h3 {
+    margin: 0;
+    padding: 5px;
+    justify-self: center;
+    /*---- font*/  
+    font-family: var(--fontParadise);
+    font-size: 25px;
+    color: var(--dirt);
+    /*---- hover animation*/ 
+    transition: all 0.5s ease-out;
+}
+
+.update-title > h3:hover { 
     color: var(--popPink);
 }
 
-#trackartist {
-    margin-top: 15px;
-    
-}
-@keyframes horzmarquee1 {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+.update-log > p {
+    padding: 0px 15px;
+    margin-top: 0px;
 }
 
-@keyframes horzmarquee2 {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-100%);
-    }
-}
-
-
-.progresspage h1, .siteupdates h1 {
-    font-family: var(--fontParadise);
-    font-size: 1.5em;
-    color: var(--dirtBrown);
-    margin: 0;
-}
-
-.progresspage {
-    grid-row: 2 / 3;
-    background-color: var(--funkyGreen);
-    border: solid #8b8b37;
-    border-radius: 5px;
-    padding: 6px;
-}
-
-.siteupdates {
-    grid-column: 2/ 3;
-    grid-row: 2 / 4;
-    background: linear-gradient(var(--softPink) 20%, #e28297);
-    border: solid var(--popPink);
-    border-radius: 5px;
-    padding: 6px;
-    
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-}
-
-.stickyupdate {
-    position: sticky;
-    top: 0;
-}
-
-.updatescroll {
-    padding-left: 10px; padding-right: 10px;
-    height: 100%;
-    overflow-y: scroll;
-    scrollbar-color: var(--darkPink) transparent;  
-}
-
-.updates {
+.update-log span {
     font-family: "Milker";
-    color: var(--cream);
+    font-size: 15px;
+    color: var(--beige);
 }
 
-.sitebuttons {
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-    width: 100%;
-    height: 100%;
-    border: dashed var(--darkPink);
 
-    min-width: 0;
+.in-progress {
+    background-color: var(--forestGreen);
+    margin: 0;
+    padding: 0px;
+    height: 150px;
+    border-radius: 30px;
+    border: solid 4px #8f9036;
+    overflow: scroll;
+    scrollbar-color: var(--beige) transparent;
 }
 
-.sitebuttons div
-{
+.progress-title {
+    top: 0;
+    position: sticky;
+    background-color: var(--forestGreen);
+}
+
+.progress-title > h3 {
+    margin: 0;
     padding: 5px;
-}
-.sitebuttons p {
-    margin: 0 ;
-    font-size: 0.8rem;
-    text-align: center;
+    justify-self: center;
+    /*---- font*/  
+    font-family: var(--fontParadise);
+    font-size: 22px;
+        color: var(--dirt);
+    /*---- hover animation*/ 
+    transition: all 0.5s ease-out;
 }
 
-.buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2px;
+.progress-title > h3:hover { 
+    color: var(--beige);
+}
 
+.in-progress ul {
+    padding: 0px 15px;
+    margin-top: 0px;
+    margin-left: 15px;
+}
+
+.in-progress li {
+    margin-bottom: 10px;
 }
 
 

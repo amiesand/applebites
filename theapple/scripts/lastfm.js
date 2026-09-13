@@ -1,35 +1,31 @@
-(() => {
-  const API_URL = "https://lastfm.tingirlauo.workers.dev/";
+
+  (() => {
+  const WORKER_URL = "https://lastfm.tingirlauo.workers.dev/";
 
   const titleEl  = document.getElementById("track-title");
   const artistEl = document.getElementById("track-artist");
   const coverEl  = document.getElementById("album-cover");
   const albumLinkEl = document.getElementById("albumlink");
 
-  let fetchId = null;
+  let fetchIntervalId = null;
 
-  async function update() {
+  // handles the incoming data from EXTERNAL source
+  window.updateMusicWidget = function(data) {
     try {
-      // fetches from the Cloudflare Worker instead of last.fm directly!! :3
-      const res = await fetch("https://lastfm.tingirlauo.workers.dev/");
-      const data = await res.json();
       const track = data?.recenttracks?.track?.[0];
       if (!track) return;
 
       const artist = track.artist["#text"];
       const name   = track.name;
 
-      // these update the html 
       if (titleEl) {
         titleEl.textContent = name;
         titleEl.href = track.url || "#";
         titleEl.target = "_blank";
       }
-      
       if (albumLinkEl) {
         albumLinkEl.href = track.url || "#";
       }
-
       if (artistEl) {
         artistEl.textContent = artist;
       }
@@ -39,25 +35,33 @@
         coverEl.src = cover;
         coverEl.style.display = "block"; 
       }
-
     } catch (err) {
       console.log("Music update error:", err);
     }
+  };
+
+  // creates a script tag to bypass the CSP block
+  function triggerRefresh() {
+    // removes previous script instances so they don't stack up in HTML memory
+    const oldScript = document.getElementById("music-jsonp-loader");
+    if (oldScript) oldScript.remove();
+
+    const script = document.createElement("script");
+    script.id = "music-jsonp-loader";
+    script.src = `${WORKER_URL}?_=${Date.now()}`; // bypasses cache
+    document.body.appendChild(script);
   }
 
-  // Initial fetch and visibility logic
-  update();
-  fetchId = setInterval(update, 30000);
+  // starts fetching loops
+  triggerRefresh();
+  fetchIntervalId = setInterval(triggerRefresh, 30000);
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
-      clearInterval(fetchId);
+      clearInterval(fetchIntervalId);
     } else {
-      update();
-      fetchId = setInterval(update, 30000);
+      triggerRefresh();
+      fetchIntervalId = setInterval(triggerRefresh, 30000);
     }
   });
 })();
-
-
-

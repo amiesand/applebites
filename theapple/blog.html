@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>blog :3</title>
+        
+         <!-- links and references below-->
+    <link href="style.css" rel="stylesheet">
+        
+        <style>
+            
+            header {
+                position: absolute;
+                top: -100px;
+                left: 600px;
+            }
+            
+            .apple2 {
+                position: absolute;
+                z-index: -2;
+                bottom: 10px;
+                right: -200px;
+                transform: rotate(10deg);
+                image-rendering: pixelated;
+            }
+            
+            .tag {
+                position: absolute;
+                top: 10px;
+                right: -260px;
+                color: var(--wink);
+            }
+            
+            .tag p {
+                margin: 0px;
+                display: inline-block;
+                padding: 2px;
+                background-color: var(--highGreen);
+            }
+            
+            .tag-span {
+                background-color: var(--highGreen);
+                color: var(--salmon);
+                margin-left: 70px;
+                 padding: 2px;
+            }
+            
+            .blog-main {
+                position: relative;
+                height: 60%;
+                width: 680px;
+                
+            }
+            
+            .content {
+                display: flex;
+                flex-direction: row;
+                height: 100%;
+            }
+            
+            .left {
+                max-width: 30%;
+                height: 100%;
+            }
+            
+            .entry-titles {
+                display: flex;
+                height: 35%;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .entry-title {
+                text-align: center;
+                margin: 20px;
+                font-family: "Cross Stitch";
+                color: var(--salmon);
+            }
+            
+            .other-entires {
+                display: flex;
+                flex-direction: column;
+                height: 65%;
+            }
+            
+            .other-entries, h2 {
+                background-color: #c7daf1;
+                font-family: "Tahoma Bold";
+                font-size: 0.9em;
+                text-align-last: center;
+            }
+            
+            button {
+                margin-top: 0.3em;
+                padding: 0.2rem;
+                border-radius: 0px 20px 20px 0px;
+                border: 1px solid lightgrey;
+   
+                background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, 
+            rgb(236, 236, 236) 50%, rgb(228, 228, 228) 51%, rgb(255, 255, 255) 100%);
+
+            }
+        
+            .blog-entry {
+                display: flex;
+                padding: 10px;
+                width: 70%;
+            }
+        
+        
+            .entry {
+                text-align-last: justify;
+                line-height: 20px;
+                padding: 0px 10px;
+                 overflow: scroll;
+               
+            } 
+            
+            .return-home {
+                display: flex;
+                background-color: var(--highGreen);
+                position: absolute;
+                border-radius: 20px 0px 0px 20px;
+                left: -80px;
+                top: 40px;
+                height: 50px;
+                width: 80px;
+                align-items: center;
+                justify-content: center;
+
+            }
+            
+            .return-home a {
+                display: inline-block;
+                color: var(--salmon);
+            }
+            
+    
+        </style>
+    </head>
+    <body>
+    
+    <main class="blog-main">
+        
+        <header><h1>Blog</h1></header>
+        <img src="images/homepage/lounge.png" style="width: 500px; position: absolute; top: 170px; left: -300px; image-rendering: pixelated; pointer-events: none;">
+        <img class="apple2" src="images/homepage/appleunravel.png" style="width: 300px">
+        <div class="tag"><p>where the apple unravels,</p><br><span class="tag-span">a shedding of <em>skin</em></span></div>
+        
+        <div class="return-home">
+            <a href="index.html">← go back</a>
+        </div>
+        
+        <article class="content">
+        <div class="left">
+            <div class="entry-titles">
+                <h1 class="entry-title" id="title3" style="display: none;">hello, stranger</h1>
+                <h1 class="entry-title" id="title2" style="display: none;">my baby sister</h1>
+                <h1 class="entry-title" id="title1" style="display: none;">i'm an @mbitious mf</h1>
+        
+        </div>
+            
+        <div class="other-entires">
+            <h2>musings, and more.<br>browse past entires here</h2>
+            <button onclick="showEntry(3)">hello, stranger</button>
+            <button onclick="showEntry(2)">redacted, my baby sister</button>
+            <button onclick="showEntry(1)">ambitious as f@ck</button>
+            
+            
+            </div>
+            
+        </div>
+            
+        <div class="blog-entry">
+            
+            <div class="entry" id="entry3">
+                <h2>october 10th 2026 . . .</h2>
+            <p>Hey so can I just be honest real quick? I don't know what in the ever living fuck
+                i'm going to be writing out on here. How much of myself can i give to strangers before i hit a mark that is too much? Will anyone hear me if i scream out into the abyss that is 
+                the black hole of the internet? Certainly it shouldn't be something I fear. What I write of myself here, I have no idea of telling if it speaks to the viewer, whoever that may be.
+                I'm a very introspective person by nature, and I tend to think a lot about things. And I mean oh boy, <em>a lot.</em> I know some things should remain private, and be reserved for pen and paper, 
+                stuffed into some old cabinet so that it may never again see the light of day. But out on here? It's imprinted on the digital sphere for all of eternity. I don't know if that's the wisest thing to do, 
+                but then again, what else is there to keep a record of me? I tend to think about people of the past, the millions of stories that remain eternally untold simply cause they did not have the means to document their lives. 
+                Their thoughts, their ways of life, the memories they laid to rest at their graves. Let's not get sappy now, but life is short. Isn't that what they all say? Live it to the fullest, live it now, for you may never know when it passes you by.
+                I'm often afraid of judgement, of saying the wrong thing, of upsetting someone by the slightest mishap. Tone it down, reread, and by the grace of god, <em>don't offend</em>. Why do we spend our whole lives filtering ourselves out? Such a large fraction of our thoughts is seized by hesitation, of a keen awareness of the self. 
+                It's both a blessing and a curse. We become distinct versions of ourselves, each catered to another person or another group of people. But in this process of dismantling and cataloging, what happens to us? The real us that
+                sits beneath it all? Does she erode for the stranger? Does she pick herself clean so that they may see her as a smooth and smothered husk of what she really is? Am I really to live the rest of my life trying to make myself more palatable for those who don't know me? Or shall I lay myself bare as I am? Will you savour me then? </p>
+        </div>
+            
+             <div class="entry" id="entry2">
+                 <p><b>redacted.</b> I'm afraid of coming back someday only to no longer recognize her at all. That terrifies me to no end.</p>
+        </div>
+            
+            <div class="entry" id="entry1">
+                 <h2>october 5th 2026 . . . </h2>
+            <p>If there's anything you should know about me, it's that i'm <b>ambitious as fuck.</b> And i know
+        this applies to various individuals, but I especially can't help but live with this nagging feeling
+        over my shoulders, and it's there from the moment i wake up. I want to learn how to code
+        to build my site, so i'm urged to get up and turn on that laptop and get on it from the second my day starts. I'm urged to 
+        improve my craft and get fucking good at art, cause if i'm mediocore then its never enough, is it?
+        I'm eager to educate myself, to learn so that i may create with taste. I feel like i lack it now. 
+        I feel like as a dropout, essentially, I don't have what it takes to be good now. I didn't go to any fancy art school, or anything of the sort.  I'll only have
+        <em>it</em>, that thing people spend their whole lives chasing, if i focus, and get good. Or so I tell myself. It's the least i can do isn't it? But then perfectionism ruins it.
+        I cannot create if i feel it must be <b>good</b>, because if its bad then it can't be shared, right? This 
+        way of thinking harms the creative in me that hungers for space, because it assures she never gets to 
+        pick up the pen in the first place, or open the damn google doc and type out the story that has picked up dust in her
+        spinning head for so long. I love my characters like a mother loves her children, and I want to give them everything. The art, the edits, 
+        the platform to exist on, the site, the story, the damn pinterest boards (done and given... will remake inevitably). And maybe one day when i have
+        it all, i can give them to the public. But if its not perfect as I imagine? Then is it fruitless? Or is it better to have
+        something out there than to have nothing at all that exists in the realm of the physical. I get so afraid
+        thinking these characters will die with me, die in my head. I would, as many artists do, give everything to 
+        share my stories with the world, and have people connect with what i create. I am eternally grateful that i can
+        at the very least share my love for them with a few select people, as many of the stories i cherish are shared narratives. 
+        these are people i've known for years, and who still sometimes message me and god i love them to death. I know
+        i'm lucky to have this, and i guess it motivates me more so to push forward. To create if not for myself, then 
+        for them. I'm an ambitious mf, and one day i'll get to where i dream of being. I know you can too. in fact, why 
+        don't we do it together? Stick around for more, so much more is to come. Thank you. </p>
+          </div>
+        
+            
+            </div>
+        </article>
+        </main>
+    
+        
+  <script>
+  function showEntry(entryNumber) {
+    // hides all blog entry sections
+    const entries = document.querySelectorAll(".entry");
+    entries.forEach((entry) => {
+      entry.style.display = "none";
+    });
+    
+    // shows the specific clicked entry 
+    const entryToShow = document.getElementById("entry" + entryNumber);
+    if (entryToShow) {
+      entryToShow.style.display = "block";
+    }
+
+    // hides all title elements
+    const entryTitles = document.querySelectorAll(".entry-title");
+        entryTitles.forEach((entryTitle) => {
+      entryTitle.style.display = "none";
+    });
+      
+      const titleToShow = document.getElementById("title" + entryNumber);
+    if (titleToShow) {
+      titleToShow.style.display = "block";
+    }
+  }
+
+  // initializes the page so entry 1 and title1 is my default 
+    
+          showEntry(3);
+  
+</script>
+
+        
+    </body>
+</html>

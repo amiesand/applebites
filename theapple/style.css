@@ -36,7 +36,7 @@
 
 
 ::selection {
-  background: #c7daf1; /* WebKit/Blink Browsers */
+  background: #c7daf1; 
 }
 
 
@@ -70,10 +70,11 @@ main {
 }
 
 header {
-    position: relative;
-    left: -20px;
+    position: absolute;
+    left: -60px;
+    top: -22px;
     font-family: "Cross Stitch";
-    font-size: 1.2rem;
+    font-size: 0.1rem;
     color: var(--highGreen);
     text-shadow: var(--salmon) 2px 2px;
     transition: all 0.6s ease;
@@ -81,6 +82,11 @@ header {
 
 header:hover {
     transform: rotate(-5deg) scale(1.2) translate(0px, -20px);
+}
+
+.topsies {
+    height: 10%;
+    
 }
 
 nav {
@@ -147,6 +153,8 @@ nav a:hover {
     background: linear-gradient(to bottom, rgb(234,243,252) 0%,rgb(195,222,245)
        24%,rgb(139,198,249) 50%,rgb(182,214,242) 79%,rgb(204,226,246) 100%);
      box-shadow: #8e8e8e 2px 2px 5px;
+    
+     transition: all 0.3s ease;
 }
 
 .disclaimer p {
@@ -156,14 +164,21 @@ nav a:hover {
    
 }
 
+.disclaimer:hover {
+    transform: translateY(6px);
+}
+
 .intro {
     padding: 1rem;
+    filter: drop-shadow(1px 1px 0 #8faacb) drop-shadow(-1px 1px 0 #35639c) drop-shadow(0 -1px 0 #7f3628) drop-shadow(1px 0 black);
+            color: white;     
 }
 
 .intro span {
-    color: var(--salmon);
+    color: var(--highGreen);
     font-family: "Tahoma Bold";
     font-style: italic;
+    background-color: var(--salmon);
 }
 
 .widgets {
@@ -183,13 +198,17 @@ nav a:hover {
 }
 #statuscafe-username {
     margin: .3em .5rem;
+    font-size: 0.8rem;
 }
 
 #statuscafe-username a {
     color: var(--hint);
+    font-family: "Cross Stitch"
 }
 #statuscafe-content {
     margin: 0 1em 0.5em 1em;
+    margin-top: 0.5em;
+    font-size: 0.8rem;
 }
 
 /*---- ....... WIDGETS */
@@ -255,6 +274,7 @@ nav a:hover {
     background-image: url(images/homepage/paper.jpg);
     background-size: cover;
     width: 200px;
+    height: 150px;
 }
 .outlinks-header { 
  text-align-last: center;
@@ -275,69 +295,10 @@ nav a:hover {
     height: 270px;
 }
 
-/*---- ....... updates */
-.update-log {
+
+.lower {
     display: flex;
-    flex-direction: column;
-    padding: 0.2rem;
-    height: 100px;
-    width: 250px;
-    border: dotted 2px var(--salmon);
-    background-color: var(--wink);
-}
-
-.update-header {
-    background-color: var(--softPink);
-}
-
-.update-header > h3 {
-    margin: 0.5rem;
-    
-    /*---- font*/  
-    font-family: "Tahoma Bold";
-    font-size: 0.8rem;
-  
-}
-
-.update-box {
-    overflow: scroll;
-}
-
-
-.update-log > p {
-    margin: 0rem 0.1rem;
-    text-transform: lowercase;
-    font-size: 0.8rem;
-
-}
-
-.update-log span {
-    font-family: "Tahoma Bold";
-    font-size: 0.7rem;
-    color: var(--salmon);
-}
-
-::-webkit-scrollbar {
-    width: 5px;
-    height: 0px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #ffffff 0%, #f2f2f3 50%, #e6e5e8 100%);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    border: 0.1px solid #9b9aa5;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background-color: #fff;
-    background-image: url(https://swirl.neocities.org/gallery/scrollbar/scrollbar2.png);
-    border-radius: 10px;
-}
-
-.below-updates {
-    display: flex;
-    
+    height: 260px;
 }
 
 .webmistress {
@@ -386,7 +347,7 @@ nav a:hover {
 .in-progress {
     display: flex;
     flex-direction: column;
-    height: 165px;
+    height: 100%;
     width: 260px;
     border-radius: 20px;
     border: solid 1px #8f9036;
@@ -470,28 +431,6 @@ nav a:hover {
     box-shadow:inset 1px 4px 5px -5px #000,inset -1px -4px 5px -5px #000;
 }
 
-.gallery {
-    display: grid;
-    
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    min-width: 270px;
-    height: 100%;
-}
-
-.gallery img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-    
-    min-width: 0;
-    min-height: 0;
-
-    border: solid 2px var(--wink);
-}
-
-
-
 .outlinks {
     display: flex;
     flex-direction: column;
@@ -512,6 +451,67 @@ nav a:hover {
 .outlinks a:visited {
     background-color: var(--highGreen);
     color: var(--wink);
+}
+
+/*---- ....... updates */
+.update-log {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    height: 100px;
+    width: 250px;
+    border: dotted 2px var(--salmon);
+    background-color: var(--wink);
+    border-radius: 20px;
+}
+
+.update-header {
+    background-color: var(--softPink);
+}
+
+.update-header > h3 {
+    margin: 0.5rem;
+    justify-self: center;
+    /*---- font*/  
+    font-family: "Tahoma Bold";
+    font-size: 0.8rem;
+  
+}
+
+.update-box {
+    overflow: scroll;
+}
+
+
+.update-log > p {
+    margin: 0rem 0.1rem;
+    text-transform: lowercase;
+    font-size: 0.8rem;
+
+}
+
+.update-log span {
+    font-family: "Tahoma Bold";
+    font-size: 0.7rem;
+    color: var(--salmon);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ffffff 0%, #f2f2f3 50%, #e6e5e8 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 0.1px solid #9b9aa5;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #fff;
+    background-image: url(https://swirl.neocities.org/gallery/scrollbar/scrollbar2.png);
+    border-radius: 10px;
 }
 
 

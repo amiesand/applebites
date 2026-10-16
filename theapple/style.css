@@ -84,10 +84,6 @@ header:hover {
     transform: rotate(-5deg) scale(1.2) translate(0px, -20px);
 }
 
-.topsies {
-    height: 10%;
-    
-}
 
 nav {
     display: flex;
@@ -136,12 +132,29 @@ nav a:hover {
     image-rendering: pixelated;
 }
 
+.topsies {
+    height: 10%;   
+}
+
+
 .top {
     display: flex;
     flex-direction: row;
-    width: 110%;
-    position: relative;
-    top: 0px;
+    width: 100%;
+    height: 70%;
+}
+
+.left-top {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.right-top {
+    display: flex;
+    flex-direction: column;
+    min-width: 280px;
+    height: 100%;
 }
 
 .disclaimer {
@@ -184,7 +197,6 @@ nav a:hover {
 .widgets {
     display: flex;
     flex-direction: column;
-    min-width: 280px;
     border: 2px dotted var(--salmon);
 }
 
@@ -192,7 +204,7 @@ nav a:hover {
 
 #statuscafe {
     padding: 5px;
-    height: 50px;
+    min-height: 60px;
     background-color: var(--highGreen);
     border-bottom: 2px dotted var(--salmon);
 }
@@ -207,14 +219,14 @@ nav a:hover {
 }
 #statuscafe-content {
     margin: 0 1em 0.5em 1em;
-    margin-top: 0.5em;
+    margin-top: 0.1em;
     font-size: 0.8rem;
 }
 
 /*---- ....... WIDGETS */
 #lastfm-widget {
     display: flex;
-    height: 75px;
+    min-height: 75px;
     background-color: var(--wink);
     overflow: auto;
     
@@ -270,11 +282,35 @@ nav a:hover {
     border-radius: 4px;
 }
 
+
 .my-links {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
     background-image: url(images/homepage/paper.jpg);
     background-size: cover;
     width: 200px;
-    height: 150px;
+    border-radius: 0px 20px 20px 0px;
+}
+.outlinks {
+    
+}
+
+.outlinks a {
+     background-color: var(--salmon);
+    color: var(--wink);
+    text-decoration: none;
+}
+
+.outlinks a:hover {
+    margin-left: 2px;
+   font-style: italic;
+}
+
+.outlinks a:visited {
+    background-color: var(--highGreen);
+    color: var(--wink);
 }
 .outlinks-header { 
  text-align-last: center;
@@ -290,11 +326,6 @@ nav a:hover {
     rotate: -12deg
 }
 
-.middle {
-    display: flex;
-    height: 270px;
-}
-
 
 .lower {
     display: flex;
@@ -304,7 +335,7 @@ nav a:hover {
 .webmistress {
     width: 180px;
     background-color: var(--salmon);
-    border-radius: 10px;
+   
     border: dashed 2px var(--highGreen);
     
 }
@@ -349,37 +380,42 @@ nav a:hover {
     flex-direction: column;
     height: 100%;
     width: 260px;
-    border-radius: 20px;
     border: solid 1px #8f9036;
-    background-color: var(--highGreen);
+    background-color: var(--wink);
     overflow: clip;
     scrollbar-color: var(--highGreen) transparent;
+
 }
+
 
 .progress-title {
     height: 25%;
-    justify-items: center;
-    align-content: center;
+    width: 60%;
+    position: relative;
+    top: 10px;
+    margin-left: 10px;
     border: 1px solid lightgrey;
-    border-radius: 15px 3px;
+    box-shadow: #8e8e8e 2px 2px 5px;
+    border-radius: 10px 10px 10px 0px;
+   
     background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, 
         rgb(236, 236, 236) 50%, rgb(228, 228, 228) 51%, rgb(255, 255, 255) 100%);
-     box-shadow: #8e8e8e 2px 2px 5px;
-    
+   
 }
 
 
 .progress-title > h3 {
     margin: 0;
-    margin-left: 60px;
+    padding-left: 10px;
+    padding-top: 3px;
     /*---- font*/  
-    font-family: "Tahoma Bold";
     font-size: 0.8rem;
-    font-style: italic;
+     color: var(--hint);
 }
 
 .wip-box {
     overflow: scroll;
+   
 }
 
 .wip {
@@ -393,17 +429,25 @@ nav a:hover {
 
 .in-progress ul {
     list-style-type: none;
-    padding: 0px 12px;
-    margin-top: 10px;
-    margin-bottom: 4px;
-    margin-left: 15px;
+    margin: 0;
+    padding-top: 15px;
+
 }
 
 .in-progress li {
-    margin-bottom: 0.6rem;
+    margin: 0.4rem 10px 10px;
     color: var(--hint);
     font-size: 0.8rem;
 }
+
+.date {
+    padding-left: 20px;
+    font-family: "Pixelated MS Sans Serif";
+    color: #bcbcbc !important;
+    text-transform: lowercase;
+}
+
+
 
 .bottom-bar {
     display: flex;
@@ -413,7 +457,7 @@ nav a:hover {
     padding: 5px 0px;
     background-color: #dedede;
     border: solid 0.1px #333;
-     border-radius: 0px 0px 20px 20px;
+
     
 }
 
@@ -425,44 +469,38 @@ nav a:hover {
 
 .send {
     border-radius: 9px;
+    
     color: rgb(255, 255, 255);
     border: inset 0.1px #333;
     background-color: #2b33ed;
     box-shadow:inset 1px 4px 5px -5px #000,inset -1px -4px 5px -5px #000;
 }
 
-.outlinks {
+
+
+.middle {
     display: flex;
-    flex-direction: column;
-    width: 150px;
+    height: 20%;
+    width: 100%;
 }
 
-.outlinks a {
-     background-color: var(--salmon);
-    color: var(--wink);
-    text-decoration: none;
-}
-
-.outlinks a:hover {
-    margin-left: 2px;
-   font-style: italic;
-}
-
-.outlinks a:visited {
-    background-color: var(--highGreen);
-    color: var(--wink);
-}
 
 /*---- ....... updates */
 .update-log {
     display: flex;
     flex-direction: column;
-    padding: 0.5rem;
-    height: 100px;
-    width: 250px;
-    border: dotted 2px var(--salmon);
-    background-color: var(--wink);
-    border-radius: 20px;
+   
+   
+    min-width: 180px;
+    border: dashed 2px var(--salmon);
+    background-image: url(images/homepage/lay.jpg);
+    image-rendering: pixelated;
+    background-size: cover;
+   
+    color: var(--wink);
+    border-radius: 0px 0px 0px 10px;
+    
+  
 }
 
 .update-header {
@@ -471,23 +509,33 @@ nav a:hover {
 
 .update-header > h3 {
     margin: 0.5rem;
+    margin-bottom: 0;
     justify-self: center;
+    align-items: center;
     /*---- font*/  
     font-family: "Tahoma Bold";
     font-size: 0.8rem;
-  
+    filter: drop-shadow(1px 1px 0 #8faacb) drop-shadow(-1px 1px 0 #35639c) drop-shadow(0 -1px 0 #7f3628) drop-shadow(1px 0 black);
+            color: white;  
+    text-decoration: underline;
 }
 
 .update-box {
-    overflow: scroll;
+     filter: drop-shadow(1px 1px 0 #8faacb) drop-shadow(-1px 1px 0 #35639c) drop-shadow(0 -1px 0 #7f3628) drop-shadow(1px 0 black);
+            color: white;   
 }
 
 
 .update-log > p {
-    margin: 0rem 0.1rem;
+    overflow: scroll;
+    margin: 0.5rem;
     text-transform: lowercase;
     font-size: 0.8rem;
 
+}
+
+.update-log a {
+    color: var(--highGreen);
 }
 
 .update-log span {
@@ -514,7 +562,69 @@ nav a:hover {
     border-radius: 10px;
 }
 
+.butt {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
 
+.stamps {
+    display: flex;
+    height: 60px;
+    width: 100%;
+    padding: 0.3rem 0;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    background-color: var(--highGreen);
+}
+
+.stamp-wrapper {
+    display: flex;
+    flex-shrink: 0;
+    gap: 0.3rem;
+    padding-left: 0.3rem;
+    user-select: none;
+    animation: marquee-scroll 20s linear infinite;
+}
+
+.stamps:hover .stamp-wrapper {
+    animation-play-state: paused;
+}
+
+.stamps img {
+    height: 60px;
+   
+    filter: sepia(90%) grayscale(60%) saturate(1) brightness(0.9);
+}
+
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.verybutt {
+    display: flex;
+    background-color: #c0c0c0;
+    flex: 1;
+    border-radius: 0 0 10px;
+    border: inset black 1px;
+    justify-content: center;
+    align-items: center;
+}
+
+.verybutt p {  font-family: "Pixelated MS Sans Serif";
+    font-size: 0.7rem; margin: 0.3rem;}
+
+.p { 
+   padding: 1px 10px;
+    background:silver;box-shadow:inset -1px -1px #0a0a0a,inset 1px 1px #fff,inset -2px -2px grey,inset 2px 2px #dfdfdf;
+
+}
 
 
 

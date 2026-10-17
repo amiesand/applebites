@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>apple's guestbook</title>
+    </head>
+    
+    
+    <body>
+        
+        <p>ignore this being plain! running a guestbook test, hopefully i can get this working soon... </p>
+    <form id="gb-form">
+  <input id="gb-name" maxlength="40" placeholder="your name" required />
+  <textarea id="gb-message" maxlength="500" placeholder="leave a message!" required></textarea>
+  <input id="gb-website" style="display:none" tabindex="-1" autocomplete="off" />
+  <button type="submit">sign</button>
+</form>
+<p id="gb-status"></p>
+<div id="gb-entries"></div>
+
+<script>
+  const WORKER_URL = "https://applebites-guestbook.tingirlauo.workers.dev/";
+
+  // load a script tag from the worker and wait for it to call us back
+  function jsonp(path, params, done) {
+    const cbName = "gb" + Math.random().toString(36).slice(2);
+    window[cbName] = function (data) {
+      delete window[cbName];
+      script.remove();
+      done(data);
+    };
+    params.callback = cbName;
+    const script = document.createElement("script");
+    script.src = WORKER_URL + path + "?" + new URLSearchParams(params);
+    document.body.appendChild(script);
+  }
+
+  function loadEntries() {
+    jsonp("/entries", {}, function (entries) {
+      const box = document.getElementById("gb-entries");
+      box.innerHTML = "";
+      entries.forEach(function (entry) {
+        const name = document.createElement("strong");
+        name.textContent = entry.name;
+        const date = document.createElement("small");
+        date.textContent = " on " + new Date(entry.time).toLocaleDateString();
+        const message = document.createElement("p");
+        message.textContent = entry.message;
+        const div = document.createElement("div");
+        div.append(name, date, message);
+        box.appendChild(div);
+      });
+    });
+  }
+
+  document.getElementById("gb-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const status = document.getElementById("gb-status");
+    status.textContent = "signing...";
+    jsonp("/sign", {
+      name: document.getElementById("gb-name").value,
+      message: document.getElementById("gb-message").value,
+      website: document.getElementById("gb-website").value,
+    }, function (result) {
+      status.textContent = result.ok ? "thanks for signing!" : result.error;
+      if (result.ok) {
+        document.getElementById("gb-form").reset();
+        loadEntries();
+      }
+    });
+  });
+
+  loadEntries();
+</script>
+    
+    
+    </body>
+</html>

@@ -225,6 +225,8 @@
     
         
   <script>
+      
+       // naming funtion "showEntry" -> labeling parameter (entryNumber) which will later be "ergänzt" or "argued" idk why the german term makes more sense for it rn 
   function showEntry(entryNumber) {
     // hides all blog entry sections
     const entries = document.querySelectorAll(".entry");
@@ -234,7 +236,8 @@
     
     // shows the specific clicked entry 
     const entryToShow = document.getElementById("entry" + entryNumber);
-    if (entryToShow) {
+    // if statement 
+     if (entryToShow) {
       entryToShow.style.display = "block";
     }
 
@@ -250,7 +253,7 @@
     }
   }
 
-  // initializes the page so entry 1 and title1 is my default 
+  // calling the function: initializes the page so entry 1 and title1 is my default 
     
           showEntry(3);
   

@@ -3,76 +3,139 @@
     <head>
         <meta charset="UTF-8" />
         <title>apple's guestbook</title>
+        <style>
+            #gb-entries {
+                overflow: scroll;
+            }
+        </style>
     </head>
     
-    
     <body>
-        
         <p>ignore this being plain! running a guestbook test, hopefully i can get this working soon... </p>
-    <form id="gb-form">
-  <input id="gb-name" maxlength="40" placeholder="your name" required />
-  <textarea id="gb-message" maxlength="500" placeholder="leave a message!" required></textarea>
-  <input id="gb-website" style="display:none" tabindex="-1" autocomplete="off" />
-  <button type="submit">sign</button>
-</form>
-<p id="gb-status"></p>
-<div id="gb-entries"></div>
+        
+        <!-- guestbook forum itself-->
+        <form id="gb-form"> 
+            <!-- name slot section: REQUIRED-->
+            <input id="gb-name" maxlength="40" placeholder="your name" required />
+            <!-- message slot section: REQUIRED-->
+            <textarea id="gb-message" maxlength="500" placeholder="leave a message!" required></textarea>
+            <!-- guestsite url slot section: OPTIONAL-->
+            <input id="gb-url" type="url" maxlength="100" placeholder="what's ur site url?" />
+            <!-- music recs slot section: OPTIONAL-->
+            <input id="gb-music" maxlength="100" placeholder="song recs? lmk!" />
+  
+            <!-- website slot section (hidden "Honeypot" for bots)-->
+            <input id="gb-website" style="display:none" tabindex="-1" autocomplete="off" />
+            
+            <!-- submit button for guests!-->
+            <button type="submit">sign</button>
+        </form>
+        
+        <!-- quick "thank you for signing message"-->
+        <p id="gb-status"></p>
+        
+        <!-- entries box below-->
+        <div id="gb-entries"></div>
+        
+        <!-- guestbook script -->
+        <script>
+          const WORKER_URL = "https://applebites-guestbook.tingirlauo.workers.dev";
 
-<script>
-  const WORKER_URL = "https://applebites-guestbook.tingirlauo.workers.dev";
+          // load a script tag from the worker and wait for it to call us back
+          function jsonp(path, params, done) {
+            const cbName = "gb" + Math.random().toString(36).slice(2);
+            window[cbName] = function (data) {
+              delete window[cbName];
+              script.remove();
+              done(data);
+            };
+            params.callback = cbName;
+            const script = document.createElement("script");
+            script.src = WORKER_URL + path + "?" + new URLSearchParams(params);
+            document.body.appendChild(script);
+          }
 
-  // load a script tag from the worker and wait for it to call us back
-  function jsonp(path, params, done) {
-    const cbName = "gb" + Math.random().toString(36).slice(2);
-    window[cbName] = function (data) {
-      delete window[cbName];
-      script.remove();
-      done(data);
-    };
-    params.callback = cbName;
-    const script = document.createElement("script");
-    script.src = WORKER_URL + path + "?" + new URLSearchParams(params);
-    document.body.appendChild(script);
-  }
+          // form Submit listener (vital to uploading entries)
+          document.getElementById("gb-form").addEventListener("submit", function (e) {
+            e.preventDefault(); // stops the page from refreshing
+            
+            const status = document.getElementById("gb-status");
+            status.textContent = "signing...";
+            
+            // gathers all the text from the inputs to send over JSONP
+            jsonp("/sign", {
+              name: document.getElementById("gb-name").value, // captures guest name
+              message: document.getElementById("gb-message").value, // captures guest message
+              user_url: document.getElementById("gb-url").value,   // captures site link
+              music: document.getElementById("gb-music").value,     // captures song rec
+              website: document.getElementById("gb-website").value, // captures bot trap
+            }, function (result) {
+              // displays success or the error from worker's new try/catch block
+              status.textContent = result.ok ? "thanks for signing!" : result.error;
+              
+              if (result.ok) {
+                document.getElementById("gb-form").reset(); // Clears form boxes
+                loadEntries(); // Re-loads list to see them instantly 
+              }
+            });
+          });
 
-  function loadEntries() {
-    jsonp("/entries", {}, function (entries) {
-      const box = document.getElementById("gb-entries");
-      box.innerHTML = "";
-      entries.forEach(function (entry) {
-        const name = document.createElement("strong");
-        name.textContent = entry.name;
-        const date = document.createElement("small");
-        date.textContent = " on " + new Date(entry.time).toLocaleDateString();
-        const message = document.createElement("p");
-        message.textContent = entry.message;
-        const div = document.createElement("div");
-        div.append(name, date, message);
-        box.appendChild(div);
-      });
-    });
-  }
+          function loadEntries() {
+            jsonp("/entries", {}, function (entries) {
+              const box = document.getElementById("gb-entries");
+              box.innerHTML = "";
+              entries.forEach(function (entry) {
+                
+                // 1. CREATE THE ENTRY CONTAINER
+                const div = document.createElement("div");
+                div.className = "gb-entry"; 
 
-  document.getElementById("gb-form").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const status = document.getElementById("gb-status");
-    status.textContent = "signing...";
-    jsonp("/sign", {
-      name: document.getElementById("gb-name").value,
-      message: document.getElementById("gb-message").value,
-      website: document.getElementById("gb-website").value,
-    }, function (result) {
-      status.textContent = result.ok ? "thanks for signing!" : result.error;
-      if (result.ok) {
-        document.getElementById("gb-form").reset();
-        loadEntries();
-      }
-    });
-  });
+                // 2. SET UP THE NAME SLOT (WITH OPTIONAL LINK DETECTOR)
+                const name = document.createElement("strong");
+                name.className = "gb-entry-name"; 
+                // 2.2 checks if the user entered a site link, if so adds or "appends" it to name
+                if (entry.user_url && entry.user_url.trim() !== "") {
+                  const link = document.createElement("a");
+                  link.href = entry.user_url;
+                  link.textContent = entry.name;
+                  link.target = "_blank"; 
+                  link.className = "gb-entry-link"; 
+                  name.appendChild(link); 
+                } else {
+                  name.textContent = entry.name;
+                }
 
-  loadEntries();
-</script>
-    
-    
+                // 3. SET UP THE TIMESTAMP
+                const date = document.createElement("small");
+                date.className = "gb-entry-date"; 
+              // This adds the standard date AND local hour/minutes automatically
+                date.textContent = " on " + new Date(entry.time).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
+
+
+                // 4. SET UP THE MAIN MESSAGE
+                const message = document.createElement("p");
+                message.className = "gb-entry-message"; 
+                message.textContent = entry.message;
+
+                // 5. APPEND THE CORE PIECES 
+                div.append(name, date, message);
+
+                // 6. DETECT AND APPEND THE OPTIONAL MUSIC SLOT
+                if (entry.music && entry.music.trim() !== "") {
+                  const music = document.createElement("p");
+                  music.className = "gb-entry-music"; 
+                  music.textContent = entry.music; 
+                  div.append(music);
+                }
+
+                // 7. PUBLISH TO THE PAGE
+                box.appendChild(div);
+              });
+            });
+          }
+
+          // invokes loadEntries function right away when page loads to fetch history
+          loadEntries();
+        </script>
     </body>
 </html>

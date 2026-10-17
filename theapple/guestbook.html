@@ -4,14 +4,65 @@
         <meta charset="UTF-8" />
         <title>apple's guestbook</title>
         <style>
+          
+          @font-face {
+          font-family: "Pixelated MS Sans Serif";
+          src: url("https://files.catbox.moe/1za99g.woff") format("woff");
+          src: url("https://files.catbox.moe/8fwbkl.woff2") format("woff2");
+          font-weight: normal;
+          font-style: normal;
+        }
+
+        @font-face {
+          font-family: "Pixelated MS Sans Serif";
+          src: url("https://files.catbox.moe/z7csle.woff") format("woff");
+          src: url("https://files.catbox.moe/moqhx6.woff2") format("woff2");
+          font-weight: bold;
+          font-style: normal;
+}
+          
+          body {
+            height: 100vh;
+            font-family: "Pixelated MS Sans Serif";
+            background-image: url(images/homepage/paper.jpg);
+            background-repeat: repeat;
+            background-size: contain;
+          }
+          
+          main {
+            display: flex;
+            flex-direction: column;
+            justify-self: center;
+            width: 30%;
+            padding: 30px;
+          }
+          
+          #gb-form {
+            display: flex;
+            flex-direction: column;
+            min-width: 200px;
+            gap: 10px;
+          }
+          
+          textarea {
+            resize: none;
+            height: 140px;
+          }
+          
             #gb-entries {
-                overflow: scroll;
+               display: flex;
+              flex-direction: column;
+              overflow: scroll;
             }
+          
+          
         </style>
     </head>
     
     <body>
-        <p>ignore this being plain! running a guestbook test, hopefully i can get this working soon... </p>
+      
+      <main>
+        <p>ignore this being plain! running a guestbook test, hopefully i can get this working soon... ₍₍⚞(˶˃ ꒳ ˂˶)⚟⁾⁾</p>
         
         <!-- guestbook forum itself-->
         <form id="gb-form"> 
@@ -36,7 +87,9 @@
         
         <!-- entries box below-->
         <div id="gb-entries"></div>
-        
+        </main>
+      
+      
         <!-- guestbook script -->
         <script>
           const WORKER_URL = "https://applebites-guestbook.tingirlauo.workers.dev";
@@ -68,14 +121,14 @@
               message: document.getElementById("gb-message").value, // captures guest message
               user_url: document.getElementById("gb-url").value,   // captures site link
               music: document.getElementById("gb-music").value,     // captures song rec
-              website: document.getElementById("gb-website").value, // captures bot trap
+              website: document.getElementById("gb-website").value, // captures bot, "honey" trap
             }, function (result) {
-              // displays success or the error from worker's new try/catch block
+              // displays success or the error from worker's try/catch block
               status.textContent = result.ok ? "thanks for signing!" : result.error;
               
               if (result.ok) {
-                document.getElementById("gb-form").reset(); // Clears form boxes
-                loadEntries(); // Re-loads list to see them instantly 
+                document.getElementById("gb-form").reset(); // clears form boxes once a guest click "submit"
+                loadEntries(); // re-loads the entry list to see them instantly 
               }
             });
           });
@@ -108,7 +161,7 @@
                 // 3. SET UP THE TIMESTAMP
                 const date = document.createElement("small");
                 date.className = "gb-entry-date"; 
-              // This adds the standard date AND local hour/minutes automatically
+              // adds the standard date AND local hour/minutes automatically
                 date.textContent = " on " + new Date(entry.time).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
 
 
@@ -121,12 +174,62 @@
                 div.append(name, date, message);
 
                 // 6. DETECT AND APPEND THE OPTIONAL MUSIC SLOT
+                // looks into the database data to see if 'music' text exists.
                 if (entry.music && entry.music.trim() !== "") {
-                  const music = document.createElement("p");
-                  music.className = "gb-entry-music"; 
-                  music.textContent = entry.music; 
-                  div.append(music);
-                }
+                  const musicParagraph = document.createElement("p");
+                  musicParagraph.className = "gb-entry-music-wrapper"; // class for the whole music line
+
+                  // bold music rec title so you know what it is
+                  const musicLabel = document.createElement("strong");
+                  musicLabel.className = "gb-entry-music-label";
+                  musicLabel.textContent = "music rec: "; // the permanent title string
+
+                  // THE TEXT: Create a separate text node or span for their raw music text
+                  const musicText = document.createTextNode(entry.music);
+          
+                  // Glue the label and their raw text together inside the paragraph tag
+                  musicParagraph.append(musicLabel, musicText);
+          
+                  // Append the whole finished music block underneath the message block
+                  div.append(musicParagraph);
+        }
+
+                
+                  
+
+               // --- STEP 6.5: DETECT AND APPEND THE AUTOMATED ADMIN REPLY ---
+        if (entry.admin_reply && entry.admin_reply.trim() !== "") {
+          const replyDiv = document.createElement("div");
+          replyDiv.className = "gb-admin-reply"; 
+          
+          const replyTitle = document.createElement("strong");
+          replyTitle.className = "gb-admin-title";
+          replyTitle.textContent = "apple replied"; 
+          
+           // 2. create a separate container for the date so it stays regular/thin text
+          const replyDateSpan = document.createElement("small");
+          replyDateSpan.className = "gb-admin-date"; // class name for CSS
+
+          // AUTOMATION: adds timestamp via the command, formats and adds it to the title
+          if (entry.admin_reply_time) {
+            const replyDate = new Date(entry.admin_reply_time).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
+            replyDateSpan.textContent = " on " + replyDate;
+          }
+          
+          // adds a colon to finish the title line neatly
+          replyTitle.textContent += ":";
+          
+            const colon = document.createTextNode(":");
+
+          const replyMessage = document.createElement("p");
+          replyMessage.className = "gb-admin-message";
+          replyMessage.innerHTML = entry.admin_reply; // keeps .innerHTML so stickers/HTML still work
+          
+          replyDiv.append(replyTitle, replyDateSpan, colon, replyMessage);
+          div.append(replyDiv); 
+        }
+
+
 
                 // 7. PUBLISH TO THE PAGE
                 box.appendChild(div);

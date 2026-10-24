@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <title>apple's guestbook</title>
+       <!-- links and references below-->
+      <link href="style.css" rel="stylesheet">
+    
         <style>
           
           @font-face {
@@ -21,59 +24,387 @@
           font-style: normal;
 }
           
+           @font-face {
+          font-family: "Ransom";
+            src: url("fonts/rans_.ttf");
+         
+          font-style: normal;
+}
+          
+          
           body {
-            height: 100vh;
-            font-family: "Pixelated MS Sans Serif";
+           height: 100vh;
+           display: flex;
+            
+            justify-content: center;
+            
+            
+            font-family: "Tahoma";
             background-image: url(images/homepage/paper.jpg);
             background-repeat: repeat;
             background-size: contain;
           }
           
-          main {
+          
+          .guestbook {
             display: flex;
-            flex-direction: column;
-            justify-self: center;
-            width: 30%;
+            gap: 40px;
+            align-content: center;
+            width: 80%;
             padding: 30px;
+         
+          }
+          
+          .left-side {
+            max-width: 350px;
+          }
+          
+          .right-side {
+             min-width: 300px;
+            display: flex;
+            overflow: scroll;
+          }
+  
+          .go-back {
+            height: fit-content;
+            color: black;
+            padding: 2px;
+            transition: all 0.3s ease;
+          }
+          
+           .go-back:hover {
+             transform: translateY(-6px);
+          }
+          
+          .introduction {
+             margin-bottom: 0;
+            font-family:  "Pixelated MS Sans Serif";
+            padding: 7px;
+            border: 1px solid #9c9c9c;
+            border-radius: 10px 10px 10px 0px;
+          color: white;
+          background: linear-gradient(to bottom, rgb(235,119,165) 0%,rgb(240,150,193) 50%,rgb(241,137,186) 51%,rgb(246,192,219) 100%);
+            transition: all 0.3s ease;
+          }
+
+
+          .introduction:hover {
+            transform: translateY(6px);
+          }
+          
+          span {
+            font-style: italic;
+        
           }
           
           #gb-form {
             display: flex;
             flex-direction: column;
-            min-width: 200px;
+            min-width: 250px;
+            max-height: 400px;
+            position: relative;
             gap: 10px;
+            padding: 25px;
+            border-radius: 20px;
+            border: groove 0.1rem  hotpink;
+            background-color: #191919;
+          
+          box-shadow: 5px 5px 5px #7e7e7e;
+           
+    
           }
           
           textarea {
             resize: none;
             height: 140px;
+           border-radius: 9px;
+            font-family: "Pixelated MS Sans Serif";
+    border: inset 0.1px #333;
+    box-shadow:inset 1px 4px 5px -5px #000,inset -1px -4px 5px -5px #000;
+}
+          
+          
+          input {
+            height: 30px;
+            border-radius: 9px;
+            font-family: "Pixelated MS Sans Serif";
+    border: inset 0.1px #333;
+    box-shadow:inset 1px 4px 5px -5px #000,inset -1px -4px 5px -5px #000;
+}
+          
+          
+          
+         
+
+button {
+    border-radius: 9px;
+    width: 60px;
+    align-self: center;
+    color: rgb(255, 255, 255);
+    border: inset 0.1px #333;
+    background-color: #2b33ed;
+    box-shadow:inset 1px 4px 5px -5px #000,inset -1px -4px 5px -5px #000;
+}
+          
+          .field-name {
+            margin: 0;
+            font-weight: normal;
+            font-family: "Pixelated MS Sans Serif";
+            font-size: 0.9rem;
+            color: hotpink;
+           
+    
+            text-align-last: center;
           }
+          
+          #gb-status {
+            display: none;
+            position: relative;
+            left: 240px;
+            font-family:  "Pixelated MS Sans Serif";
+            font-style: italic;
+            color: hotpink;
+            padding: 10px;
+            width: 125px;
+            border-radius: 10px 0px 0px 10px;
+            
+          }
+          
+        
           
             #gb-entries {
                display: flex;
               flex-direction: column;
-              overflow: scroll;
+              gap: 10px;
+
+              padding-right: 20px;
             }
           
+          .gb-entry {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: groove 0.1rem  hotpink;
+            background-color: #76c500;
+          
+          box-shadow: 5px 5px 5px #7e7e7e;
+            border-radius: 10px;
+          }
+          
+          .gb-entry-name {
+            font-family: "Tahoma Bold";
+            color: green;
+            padding: 3px
+          }
+          
+          .gb-entry-link {
+            color: green;
+            text-decoration: underline darkgreen;
+            
+             &:hover {
+          
+               color: #2b33ed;
+              text-decoration: underline;
+    }
+    &:active {
+         font-size: 120%;
+    }
+     }
+           
+           
+
+
+         
+          
+          .gb-entry-date {
+            color:hotpink;
+            font-family: "Pixelated MS Sans Serif";
+            font-style: italic;
+            padding-left: 70px;
+          }
+          
+          .gb-entry-message {
+            padding: 10px;    
+            margin: 0;
+            margin-top: 2px;
+            border-radius: 10px;
+            background-color: aliceblue;
+          }
+          
+          
+.gb-entry-message {
+    border: 1px solid lightgrey;
+    box-shadow: #8e8e8e 2px 2px 5px;
+    border-radius: 0px 10px 10px 10px;
+    font-size: 0.9rem;
+   
+    background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, 
+        rgb(236, 236, 236) 50%, rgb(228, 228, 228) 51%, rgb(255, 255, 255) 100%);
+   
+}
+
+
+
+          
+          .gb-entry-music-wrapper {
+                border: 1px solid lightgrey;
+    box-shadow: #8e8e8e 2px 2px 5px;
+    border-radius: 0px 10px 10px 10px;
+    font-size: 0.9rem;
+   
+    background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, 
+        rgb(236, 236, 236) 50%, rgb(228, 228, 228) 51%, rgb(255, 255, 255) 100%);
+           padding: 10px;
+          }
+          
+        
+          
+       
+          
+          .gb-entry-music-label {
+             border-left: 4px solid hotpink; /* Creates the vertical line (adjust thickness and color here) */
+            padding-left: 15px;             /* Pushes the text to the right so it doesn't touch the line */
+            margin: 10px 0; 
+            font-family:  "Pixelated MS Sans Serif";
+            font-weight: bolder;
+
+          }
+          
+          .gb-admin-reply {
+            margin-top: 15px;
+              margin-bottom: 0;
+            font-size: 0.9rem;
+             font-family: "Pixelated MS Sans Serif";
+            padding: 7px;
+            border: 1px solid #9c9c9c;
+            border-radius: 10px 10px 0px 10px;
+             background: linear-gradient(to bottom, rgb(235,119,165) 0%,rgb(240,150,193) 50%,rgb(241,137,186) 51%,rgb(246,192,219) 100%);
+            box-shadow: #8e8e8e 2px 2px 5px;
+            
+          }
+        
+          .gb-admin-title {
+            color: var(--highGreen);    
+          }
+          
+          .gb-admin-date {
+            color:black;
+            font-style: italic;
+          }
+          
+                
+          .title {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+    position: relative;
+    margin-bottom: -40px;
+    top: -22px;
+    z-index: 2;
+    font-size: 2rem;
+    font-family: "Cross Stitch";
+    color: var(--highGreen);
+    text-shadow: var(--salmon) 2px 2px;
+   transition: all 0.6s ease;
+            
+          
+}  
+          
+          h2 {
+           padding: 10px;
+          font-family: "Ransom";
+            margin: 0;
+             box-shadow: 5px 5px 5px #7e7e7e;
+             
+          }
+          
+          .black {
+            color: white;
+            background-color: #000;
+           transform: rotate(3deg);
+          }
+          
+          .pink {
+            background-color: hotpink;
+            font-size: 3.5rem;
+             transform: rotate(-3deg);
+          }
+
+h2:hover {
+    transform: rotate(-5deg) scale(1.2) translate(0px, -20px);
+          }
+          
+          .far-left {
+            height: 100%;
+          }
+          
+          .far-left img {
+            image-rendering: pixelated;
+            filter: sepia(60%) hue-rotate(300deg) grayscale(20%) brightness(1);
+          }
+          
+          .pinkpaper  {
+            position: relative; 
+            z-index: 2; 
+            margin-top: -240px;
+            top: 100px; right: 20px; transform: rotate(-4deg);
+            width: fit-content;
+          }
+          
+          .pinkpaper:hover {
+            transform: rotate(4deg) translateY(10px);
+             }
+          
+           .pinkpaper img  {
+              height: 230px;
+            }
+          
+          .pinkpaper p { 
+            position: absolute;
+            z-index: 2; 
+            top: 85px;
+            left: 20px;
+            margin: 0px;
+            font-family: Ransom;
+            font-size: 1.1rem;
+              }
+
           
         </style>
     </head>
     
     <body>
+   
+      <main class="guestbook">
       
-      <main>
-        <p>ignore this being plain! running a guestbook test, hopefully i can get this working soon... ₍₍⚞(˶˃ ꒳ ˂˶)⚟⁾⁾</p>
+       <img src="images/espy-grunge-8/espy%20grunge%208B.png" style="position: fixed; height: 100%; right: 0; top: 0; z-index: -1;">
+       
+         <a class="go-back" href="index.html">←</a>
+        <aside class="left-side">
+       
+        <p class="introduction"><span>Welcome to my guestbook page!</span></p>
+          
+          <p class="introduction">Feel free to leave me a message, I would much appreciate it. ₍₍⚞(˶˃ ꒳ ˂˶)⚟⁾⁾ </p>
+          
+           <p class="introduction">Just please no hate comments here. I'm sensitive to the max... </p>
         
         <!-- guestbook forum itself-->
+          <img src="images/guestbook/frog.png" style="width: 230px; position: relative; top: 340px; right: 60px; margin-bottom: -200px; z-index: 1; image-rendering:pixelated; pointer-events: none; filter: sepia(40%) hue-rotate(20deg) grayscale(30%) brightness(1.2);">
         <form id="gb-form"> 
             <!-- name slot section: REQUIRED-->
-            <input id="gb-name" maxlength="40" placeholder="your name" required />
+            <h3 class="field-name">Name:</h3>
+            <input id="gb-name" maxlength="40" placeholder=" your name" required />
             <!-- message slot section: REQUIRED-->
-            <textarea id="gb-message" maxlength="500" placeholder="leave a message!" required></textarea>
+             <h3 class="field-name">Message:</h3>
+            <textarea id="gb-message" maxlength="500" placeholder="  
+                    leave me a message! ⋆˚꩜｡" required></textarea>
             <!-- guestsite url slot section: OPTIONAL-->
-            <input id="gb-url" type="url" maxlength="100" placeholder="what's ur site url?" />
+            <h3 class="field-name">Website (if you have one! i'd love to check it out :)</h3>
+            <input id="gb-url" type="url" maxlength="100" placeholder=" what's your site url? - Optional" />
             <!-- music recs slot section: OPTIONAL-->
-            <input id="gb-music" maxlength="100" placeholder="song recs? lmk!" />
+            <h3 class="field-name">Got any song recs? I beg of thee, please lmk!</h3>
+            <input id="gb-music" maxlength="100" placeholder=" song recs? - Optional" />
   
             <!-- website slot section (hidden "Honeypot" for bots)-->
             <input id="gb-website" style="display:none" tabindex="-1" autocomplete="off" />
@@ -84,9 +415,23 @@
         
         <!-- quick "thank you for signing message"-->
         <p id="gb-status"></p>
+          
+        </aside>
         
+        <aside class="right-side">
         <!-- entries box below-->
         <div id="gb-entries"></div>
+          
+          </aside>
+        <aside class="far-left">
+           <div class="title"><h2 class="black">G</h2><h2 class="pink">u</h2><h2 class="black">e</h2><h2 class="pink">s</h2><h2 class="black">t</h2>
+          <h2 class="pink">B</h2><h2 class="black">o</h2>  <h2 class="pink">o</h2> <h2 class="black">k</h2></div>
+          
+         <img src="images/guestbook/pen15.png" style="height: 300px; transform: rotate(4deg);">
+          <div class="pinkpaper"><img src="images/guestbook/pinkpaper.png"><p>I read all your notes ! !<br>thank you for coming !</p></div>
+        <img src="images/guestbook/jealousy.png" style="height: 300px; transform: rotate(-7deg);">
+          </aside>
+        
         </main>
       
       
@@ -108,12 +453,14 @@
             document.body.appendChild(script);
           }
 
-          // form Submit listener (vital to uploading entries)
+         // form Submit listener (vital to uploading entries)
           document.getElementById("gb-form").addEventListener("submit", function (e) {
             e.preventDefault(); // stops the page from refreshing
             
             const status = document.getElementById("gb-status");
             status.textContent = "signing...";
+            
+          
             
             // gathers all the text from the inputs to send over JSONP
             jsonp("/sign", {
@@ -133,103 +480,105 @@
             });
           });
 
-          function loadEntries() {
+                    function loadEntries() {
             jsonp("/entries", {}, function (entries) {
               const box = document.getElementById("gb-entries");
               box.innerHTML = "";
-              entries.forEach(function (entry) {
+              entries.forEach(function (entry, i) {
                 
                 // 1. CREATE THE ENTRY CONTAINER
                 const div = document.createElement("div");
-                div.className = "gb-entry"; 
+                div.className = "gb-entry";
+                
+                // 1.2 CREATE THE ENTRY NUMBER BADGE (Counts down)
+              const entryNumber = document.createElement("span");
+              entryNumber.className = "gb-entry-number";
+              entryNumber.textContent = "#" + (entries.length - i) + " ";
+                
+
 
                 // 2. SET UP THE NAME SLOT (WITH OPTIONAL LINK DETECTOR)
                 const name = document.createElement("strong");
-                name.className = "gb-entry-name"; 
-                // 2.2 checks if the user entered a site link, if so adds or "appends" it to name
+                name.className = "gb-entry-name";
+
                 if (entry.user_url && entry.user_url.trim() !== "") {
                   const link = document.createElement("a");
                   link.href = entry.user_url;
                   link.textContent = entry.name;
-                  link.target = "_blank"; 
-                  link.className = "gb-entry-link"; 
-                  name.appendChild(link); 
+                  link.target = "_blank";
+                  link.className = "gb-entry-link";
+                  name.appendChild(link);
                 } else {
                   name.textContent = entry.name;
                 }
 
                 // 3. SET UP THE TIMESTAMP
                 const date = document.createElement("small");
-                date.className = "gb-entry-date"; 
-              // adds the standard date AND local hour/minutes automatically
-                date.textContent = " on " + new Date(entry.time).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
+                date.className = "gb-entry-date";
+                date.textContent = " ࿔ " + new Date(entry.time).toLocaleString([], { dateStyle: 'long', timeStyle: 'short' });
 
-
-                // 4. SET UP THE MAIN MESSAGE
+                // 4. SET UP THE MAIN MESSAGE (created here, but appended later)
                 const message = document.createElement("p");
-                message.className = "gb-entry-message"; 
+                message.className = "gb-entry-message";
                 message.textContent = entry.message;
 
-                // 5. APPEND THE CORE PIECES 
-                div.append(name, date, message);
+                // 5. APPEND THE NAME AND DATE FIRST
+                 div.append(entryNumber, name, date);
 
-                // 6. DETECT AND APPEND THE OPTIONAL MUSIC SLOT
-                // looks into the database data to see if 'music' text exists.
+                // 6. DETECT AND APPEND THE OPTIONAL MUSIC SLOT (now comes before message)
                 if (entry.music && entry.music.trim() !== "") {
                   const musicParagraph = document.createElement("p");
-                  musicParagraph.className = "gb-entry-music-wrapper"; // class for the whole music line
+                  musicParagraph.className = "gb-entry-music-wrapper";
 
-                  // bold music rec title so you know what it is
                   const musicLabel = document.createElement("strong");
                   musicLabel.className = "gb-entry-music-label";
-                  musicLabel.textContent = "music rec: "; // the permanent title string
-
-                  // THE TEXT: Create a separate text node or span for their raw music text
-                  const musicText = document.createTextNode(entry.music);
-          
-                  // Glue the label and their raw text together inside the paragraph tag
-                  musicParagraph.append(musicLabel, musicText);
-          
-                  // Append the whole finished music block underneath the message block
-                  div.append(musicParagraph);
-        }
-
-                
+                  musicLabel.textContent = "music recs? ";
+                  
                   
 
-               // --- STEP 6.5: DETECT AND APPEND THE AUTOMATED ADMIN REPLY ---
-        if (entry.admin_reply && entry.admin_reply.trim() !== "") {
-          const replyDiv = document.createElement("div");
-          replyDiv.className = "gb-admin-reply"; 
-          
-          const replyTitle = document.createElement("strong");
-          replyTitle.className = "gb-admin-title";
-          replyTitle.textContent = "apple replied"; 
-          
-           // 2. create a separate container for the date so it stays regular/thin text
-          const replyDateSpan = document.createElement("small");
-          replyDateSpan.className = "gb-admin-date"; // class name for CSS
+                            // creates a literal line break element
+            const breakTag = document.createElement("br"); 
 
-          // AUTOMATION: adds timestamp via the command, formats and adds it to the title
-          if (entry.admin_reply_time) {
-            const replyDate = new Date(entry.admin_reply_time).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' });
-            replyDateSpan.textContent = " on " + replyDate;
-          }
-          
-          // adds a colon to finish the title line neatly
-          replyTitle.textContent += ":";
-          
-            const colon = document.createTextNode(":");
+            const musicText = document.createTextNode(entry.music);
 
-          const replyMessage = document.createElement("p");
-          replyMessage.className = "gb-admin-message";
-          replyMessage.innerHTML = entry.admin_reply; // keeps .innerHTML so stickers/HTML still work
-          
-          replyDiv.append(replyTitle, replyDateSpan, colon, replyMessage);
-          div.append(replyDiv); 
-        }
+            // glue them together in order: Label -> Break -> Text
+                musicParagraph.append(musicLabel, breakTag, musicText); 
+  
+                  
+                  // appends the finished music block right under the name/date
+                  div.append(musicParagraph);
+                }
 
+                // 6.2 APPEND THE MAIN MESSAGE HERE (now comes after music)
+                div.append(message);
 
+                // --- STEP 6.5: DETECT AND APPEND THE AUTOMATED ADMIN REPLY ---
+                if (entry.admin_reply && entry.admin_reply.trim() !== "") {
+                  const replyDiv = document.createElement("div");
+                  replyDiv.className = "gb-admin-reply";
+
+                  const replyTitle = document.createElement("strong");
+                  replyTitle.className = "gb-admin-title";
+                  replyTitle.textContent = "apple replied";
+
+                  const replyDateSpan = document.createElement("small");
+                  replyDateSpan.className = "gb-admin-date";
+
+                  if (entry.admin_reply_time) {
+                    const replyDate = new Date(entry.admin_reply_time).toLocaleString([], { dateStyle: 'long', timeStyle: 'short' });
+                    replyDateSpan.textContent = " on " + replyDate;
+                  }
+
+                  replyTitle.textContent += ":";
+                
+
+                  const replyMessage = document.createElement("p");
+                  replyMessage.className = "gb-admin-message";
+                  replyMessage.innerHTML = entry.admin_reply;
+
+                  replyDiv.append(replyTitle, replyDateSpan, replyMessage);
+                  div.append(replyDiv);
+                }
 
                 // 7. PUBLISH TO THE PAGE
                 box.appendChild(div);

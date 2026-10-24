@@ -22,6 +22,7 @@
         // MORE THAN FOUR SONGS CAN BE ADDED!!
         // JUST ADD ANOTHER BRACKET WITH NAME AND PATH
         // CATBOX.MOE IS RECOMMENDED FOR UPLOADING MP3 FILES
+// the following as you can see with the brakets is an JS object!
         let track_list = [
             {
                 name:"Boom Clap - Charlie xcx",

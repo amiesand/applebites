@@ -7,7 +7,8 @@
     <title>applebites!</title>
     
      <!-- links and references below-->
-    <link href="style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style-my-tooltips.css" rel="stylesheet" type="text/css"/>
     
   <!-- PLAYER STYLING BELOW -->  
 <!-- p.1 stuff you can probably edit without breaking the styling lol --> 
@@ -493,12 +494,12 @@ function createDiv(height, width) {
     
       <nav>
        
-        <div class="item"><a href="about.html">about</a></div>
-        <div class="item"><a href="ocportal.html">oc portal</a></div>
+        <div class="item"><a href="about.html" title="learn allll about meee lols">about</a></div>
+        <div class="item"><a href="ocportal.html" title="where my children rest">oc portal</a></div>
         <div class="item"><a href="blog.html">blog</a></div>
         <div class="item"><a href="shrines.html">shrines</a></div>
         <div class="item"><a href="media.html">media</a></div>
-        <div class="item"><a href="guestbook.html">guestbook</a></div>
+        <div class="item"><a href="guestbook.html" title="sign my guestbook for a kiss!">guestbook</a></div>
         <div class="item"><a href="sitemap.html">sitemap</a></div>
           
       </nav>
@@ -593,7 +594,7 @@ function createDiv(height, width) {
   </div>
   <div class="window-body">
     <div class="flex">
-<div id="imagestyle"><img class="ic" src="images/homepage/merpie.jpeg" alt="merp icon"></div>
+<div id="imagestyle"><img class="ic" src="images/homepage/merpie.jpeg" alt="merp icon" title="oh jackie!"></div>
     <div id="musicplayer">
         <div class="songtitlewindow">
             <div class="flex"><marquee scrollamount="4" class="songtitle"></marquee><div class="songtitlearrow"></div></div>
@@ -676,7 +677,7 @@ function createDiv(height, width) {
       <a href="https://neocities.org/site/applebites#">neocities profile</a><br>
       ⤷ <a href="https://www.last.fm/user/auo_listens">last.fm</a><br> ⤷ <a href="https://de.pinterest.com/absolutelygoingbonkers">pinterest</a> <br>
       ⤷ <a href="https://boxd.it/7drgZ">letterboxd</a></p></div>
-           <img class="lpspopular" src="images/homepage/lpspopular.jpg" style="height: 60px; width: 120px; position: absolute; left: 130px; top: 100px; transform: rotate(6deg); filter: sepia(90%) hue-rotate(0deg) saturate(3) brightness(0.9);">
+           <img class="lpspopular" title="pop! pop!" src="images/homepage/lpspopular.jpg" style="height: 60px; width: 120px; position: absolute; left: 130px; top: 100px; transform: rotate(6deg); filter: sepia(90%) hue-rotate(0deg) saturate(3) brightness(0.9);">
       </article>
         
        
@@ -745,9 +746,14 @@ function createDiv(height, width) {
     
     
     
-    
+
+ 
     <script src="scripts/lastfm.js"></script>
     <script src="scripts/CDplayer.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+    <script src="scripts/jquery.style-my-tooltips.js"></script>
+    <script src="scripts/tooltip-settings.js"></script>
+   
     
     
   </body>
